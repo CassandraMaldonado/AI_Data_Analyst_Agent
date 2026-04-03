@@ -12,6 +12,8 @@ Traditional data analysis requires manual SQL, Python and statistical reasoning.
 
 The goal is to simulate a **real data analyst workflow**, not just a chatbot.
 
+---
+
 ## Architecture
 
 Multi-agent system orchestrated using LangGraph:
