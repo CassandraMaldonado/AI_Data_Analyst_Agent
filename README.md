@@ -1,4 +1,4 @@
-# AI_Data_Analyst_Agent
+# AI Data Analyst Agent
 An autonomous multi-agent system that performs end-to-end data analysis from question understanding to statistical inference and executive insights. 
 
 ## Overview
