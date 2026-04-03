@@ -10,7 +10,7 @@ Traditional data analysis requires manual SQL, Python and statistical reasoning.
 - Generate structured, explainable insights
 - Self-validate outputs to reduce hallucinations
 
-👉 The goal is to simulate a **real data analyst workflow**, not just a chatbot.
+The goal is to simulate a **real data analyst workflow**, not just a chatbot.
 
 ---
 
