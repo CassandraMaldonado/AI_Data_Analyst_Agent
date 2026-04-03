@@ -10,5 +10,37 @@ Traditional data analysis requires manual SQL, Python and statistical reasoning.
 - Generate structured, explainable insights
 - Self-validate outputs to reduce hallucinations
 
-The goal is to simulate a real data analyst workflow, not just a chatbot.
+👉 The goal is to simulate a **real data analyst workflow**, not just a chatbot.
+
 ---
+
+## 🏗️ Architecture
+
+Multi-agent system orchestrated using LangGraph:
+
+1. **Planner Agent**
+   - Breaks down user query into analytical steps
+
+2. **Execution Agent**
+   - Writes and executes Python/SQL (Pandas, DuckDB)
+
+3. **Statistics Agent**
+   - Runs regressions, hypothesis tests, correlations
+
+4. **Insight Agent**
+   - Translates outputs into business insights
+
+5. **Critic Agent**
+   - Validates results, checks for logical/statistical errors
+
+---
+
+## 🔄 Workflow
+
+User Question → Planner → Execution → Statistics → Insight → Critic → Final Answer
+
+---
+
+## 📊 Example
+
+**Input:**
