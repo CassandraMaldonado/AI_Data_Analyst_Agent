@@ -17,19 +17,19 @@ The goal is to simulate a **real data analyst workflow**, not just a chatbot.
 Multi-agent system orchestrated using LangGraph:
 
 1. **Planner Agent**
-   - Breaks down user query into analytical steps
+   - Breaks down user query into analytical steps.
 
 2. **Execution Agent**
-   - Writes and executes Python/SQL (Pandas, DuckDB)
+   - Writes and executes Python/SQL (Pandas, DuckDB).
 
 3. **Statistics Agent**
-   - Runs regressions, hypothesis tests, correlations
+   - Runs regressions, hypothesis tests, correlations.
 
 4. **Insight Agent**
-   - Translates outputs into business insights
+   - Translates outputs into business insights.
 
 5. **Critic Agent**
-   - Validates results, checks for logical/statistical errors
+   - Validates results, checks for logical/statistical errors.
 
 ---
 
