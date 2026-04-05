@@ -35,7 +35,7 @@ Multi-agent system orchestrated using LangGraph:
 
 ---
 
-## 🔄 Workflow
+## Workflow
 
 User Question → Planner → Execution → Statistics → Insight → Critic → Final Answer
 
