@@ -37,10 +37,10 @@ Multi-agent system orchestrated using LangGraph:
 
 ## Workflow
 
-User Question → Planner → Execution → Statistics → Insight → Critic → Final Answer
+User Question -> Planner -> Execution -> Statistics → Insight → Critic → Final Answer
 
 ---
 
-## 📊 Example
+## Example
 
 **Input:**
