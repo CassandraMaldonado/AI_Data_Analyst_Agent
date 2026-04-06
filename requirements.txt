@@ -1,1 +1,9 @@
-
+fastapi
+uvicorn
+pandas
+duckdb
+scipy
+statsmodels
+openai
+python-dotenv
+pydantic
