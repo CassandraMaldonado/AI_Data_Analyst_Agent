@@ -17,13 +17,9 @@ def run_workflow(question: str, dataset_path: str) -> dict:
     )
 
     state = planner_agent(state)
-
     state = executor_agent(state)
-
     state = stats_agent(state)
-
     state = insight_agent(state)
-
     state = critic_agent(state)
 
     state.final_answer = {
