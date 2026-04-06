@@ -2,26 +2,18 @@ from core.state import AnalystState
 from tools.data_loader import load_dataset
 from agents.planner import planner_agent
 from agents.executor import executor_agent
-
 from agents.stats_agent import stats_agent
-
 from agents.insight_agent import insight_agent
-
 from agents.critic import critic_agent
 
 
 def run_workflow(question: str, dataset_path: str) -> dict:
-
     df, columns = load_dataset(dataset_path)
 
     state = AnalystState(
-
         question=question,
-
         dataset_path=dataset_path,
-
         columns=columns,
-
     )
 
     state = planner_agent(state)
