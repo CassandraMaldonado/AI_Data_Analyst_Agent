@@ -30,7 +30,7 @@ def executor_agent(state: AnalystState) -> AnalystState:
             cat_summary[col] = df[col].astype(str).value_counts().head(10).to_dict()
         output["summary"]["categorical_top_values"] = cat_summary
 
-    # Optional DuckDB exploration
+    # DuckDB exploration.
     con = duckdb.connect()
     con.register("df", df)
 
