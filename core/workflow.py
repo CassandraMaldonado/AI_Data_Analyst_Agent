@@ -23,13 +23,9 @@ def run_workflow(question: str, dataset_path: str) -> dict:
     state = critic_agent(state)
 
     state.final_answer = {
-
         "question": state.question,
-
         "analysis_steps": state.analysis_steps,
-
         "findings": state.insights,
-
         "evidence": state.stats_output,
 
         "critique": state.critique,
