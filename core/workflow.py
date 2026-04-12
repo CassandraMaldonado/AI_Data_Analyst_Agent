@@ -27,11 +27,8 @@ def run_workflow(question: str, dataset_path: str) -> dict:
         "analysis_steps": state.analysis_steps,
         "findings": state.insights,
         "evidence": state.stats_output,
-
         "critique": state.critique,
-
         "confidence": "medium",
-
     }
 
     return state.final_answer
