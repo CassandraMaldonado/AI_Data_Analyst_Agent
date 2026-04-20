@@ -1,30 +1,64 @@
+import json
+import logging
+
 from core.state import AnalystState
-from tools.llm import ask_llm
+from schemas.outputs import CritiqueResult, RetryStage
+from tools.llm import ask_llm_structured
+
+logger = logging.getLogger(__name__)
+
 
 def critic_agent(state: AnalystState) -> AnalystState:
-    system_prompt = """
-    You are a critical reviewer of data science analyses.
-    Check whether conclusions are supported by the evidence.
-    Identify overclaims, weak logic, or missing caveats.
-    Keep the review concise.
-    """
+    system_prompt = """You critically review data analyses.
+Return structured JSON matching the schema.
 
-    user_prompt = f"""
-    Question:
-    {state.question}
+Rules:
+- supported=true only if conclusions match evidence and statistical outputs.
+- If unsupported, choose retry_stage: insights (rewrite narrative), stats (different/wrong tests), executor (data profiling wrong).
+- Use retry_stage none if retrying would not help or evidence is fundamentally missing."""
 
-    Analysis steps:
-    {state.analysis_steps}
+    user_prompt = f"""Question:
+{state.question}
 
-    Execution output:
-    {state.execution_output}
+Analysis steps:
+{state.analysis_steps}
 
-    Stats output:
-    {state.stats_output}
+Execution output:
+{json.dumps(state.execution_output, indent=2, default=str)}
 
-    Draft insights:
-    {state.insights}
-    """
+Stats output:
+{json.dumps(state.stats_output, indent=2, default=str)}
 
-    state.critique = ask_llm(system_prompt, user_prompt)
+Draft insights:
+{state.insights}
+"""
+
+    try:
+        cr = ask_llm_structured(CritiqueResult, system_prompt, user_prompt)
+        state.critique = cr.summary
+        state.critique_result = cr.model_dump(mode="json")
+
+        if not cr.supported and cr.retry_stage != RetryStage.NONE:
+            if state.retry_count < state.max_retries:
+                state.retry_count += 1
+                state.critique_feedback = "\n".join(
+                    [cr.summary] + [f"- {i}" for i in cr.issues]
+                )
+            else:
+                state.critique_feedback = None
+        else:
+            state.critique_feedback = None
+    except Exception as e:
+        logger.exception("Critic structured call failed")
+        state.errors.append(f"critic: {e}")
+        fb = CritiqueResult(
+            supported=False,
+            summary=f"Critic unavailable ({e}); treat findings as unverified.",
+            issues=["critic_agent_error"],
+            retry_stage=RetryStage.NONE,
+        )
+        state.critique = fb.summary
+        state.critique_result = fb.model_dump(mode="json")
+        state.critique_feedback = None
+
     return state
