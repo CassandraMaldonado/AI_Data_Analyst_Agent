@@ -42,5 +42,3 @@ User Question -> Planner -> Execution -> Statistics -> Insight -> Critic -> Fina
 ---
 
 ## Example
-
-**Input:**
