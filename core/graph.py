@@ -1,4 +1,4 @@
-"""LangGraph orchestration for the analyst workflow."""
+# LangGraph orchestration.
 
 from __future__ import annotations
 
