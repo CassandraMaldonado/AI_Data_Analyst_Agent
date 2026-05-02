@@ -27,3 +27,15 @@ class StatsIntent(str, Enum):
     ANOVA_ONE_WAY = "anova_one_way"
     CUSTOM_CODE = "custom_code"
     NONE = "none"
+
+
+class StatsRouterOutput(BaseModel):
+    intent: StatsIntent
+    confidence: float = Field(ge=0.0, le=1.0, default=0.8)
+    column_a: Optional[str] = None
+    column_b: Optional[str] = None
+    group_column: Optional[str] = None
+    reasoning: str = ""
+    prefer_spearman: bool = False
+
+
