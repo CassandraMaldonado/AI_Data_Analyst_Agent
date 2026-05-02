@@ -39,3 +39,10 @@ class StatsRouterOutput(BaseModel):
     prefer_spearman: bool = False
 
 
+class CorrelationResult(BaseModel):
+    test: Literal["pearson", "spearman"] = "pearson"
+    column_1: str
+    column_2: str
+    statistic: float
+    p_value: float
+    n: int
