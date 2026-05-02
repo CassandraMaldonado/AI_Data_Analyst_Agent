@@ -8,7 +8,7 @@ import tempfile
 
 import pandas as pd
 
-# Project root on path when run as python examples/end_to_end.py
+# Project root on path when run as python examples/end_to_end.py.
 _ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if _ROOT not in sys.path:
     sys.path.insert(0, _ROOT)
