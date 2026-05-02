@@ -17,3 +17,13 @@ class ExecutionSummary(BaseModel):
     summary: dict[str, Any] = Field(default_factory=dict)
     preview: list[dict[str, Any]] = Field(default_factory=list)
     optional_queries: dict[str, Any] = Field(default_factory=dict)
+
+
+class StatsIntent(str, Enum):
+    DESCRIBE = "describe"
+    CORRELATION = "correlation"
+    TWO_SAMPLE = "two_sample"
+    CHI_SQUARE = "chi_square"
+    ANOVA_ONE_WAY = "anova_one_way"
+    CUSTOM_CODE = "custom_code"
+    NONE = "none"
