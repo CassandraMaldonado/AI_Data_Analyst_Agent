@@ -46,3 +46,15 @@ class CorrelationResult(BaseModel):
     statistic: float
     p_value: float
     n: int
+
+
+class TwoSampleResult(BaseModel):
+    test: Literal["ttest_ind", "mannwhitneyu"]
+    numeric_column: str
+    group_column: str
+    group_a: str
+    group_b: str
+    statistic: float
+    p_value: float
+    n_a: int
+    n_b: int
