@@ -4,3 +4,6 @@ from enum import Enum
 from typing import Any, Literal, Optional, Union
 
 from pydantic import BaseModel, Field
+
+class PlannerOutput(BaseModel):
+    steps: list[str] = Field(description="Ordered analytical steps")
