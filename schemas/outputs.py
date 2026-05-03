@@ -67,3 +67,12 @@ class ChiSquareResult(BaseModel):
     statistic: float
     p_value: float
     dof: int
+    
+
+class ANOVAResult(BaseModel):
+    test: Literal["anova_one_way"] = "anova_one_way"
+    numeric_column: str
+    group_column: str
+    statistic: float
+    p_value: float
+    groups: int
