@@ -97,3 +97,9 @@ class StatsResultsBundle(BaseModel):
     custom_code_stderr: Optional[str] = None
     custom_payload: Optional[dict[str, Any]] = None
     errors: list[str] = Field(default_factory=list)
+
+
+class InsightReport(BaseModel):
+    main_findings: list[str]
+    evidence: list[str]
+    caveats: list[str]
