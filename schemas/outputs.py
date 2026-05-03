@@ -58,3 +58,12 @@ class TwoSampleResult(BaseModel):
     p_value: float
     n_a: int
     n_b: int
+
+
+class ChiSquareResult(BaseModel):
+    test: Literal["chi2_contingency"] = "chi2_contingency"
+    column_1: str
+    column_2: str
+    statistic: float
+    p_value: float
+    dof: int
