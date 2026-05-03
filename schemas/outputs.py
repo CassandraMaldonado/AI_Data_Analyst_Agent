@@ -103,3 +103,10 @@ class InsightReport(BaseModel):
     main_findings: list[str]
     evidence: list[str]
     caveats: list[str]
+
+
+class RetryStage(str, Enum):
+    NONE = "none"
+    INSIGHTS = "insights"
+    STATS = "stats"
+    EXECUTOR = "executor"
