@@ -76,3 +76,16 @@ class ANOVAResult(BaseModel):
     statistic: float
     p_value: float
     groups: int
+
+class DescribeOnlyResult(BaseModel):
+    test: Literal["describe"] = "describe"
+    notes: str = ""
+
+
+AnyStatResult = Union[
+    CorrelationResult,
+    TwoSampleResult,
+    ChiSquareResult,
+    ANOVAResult,
+    DescribeOnlyResult,
+]
