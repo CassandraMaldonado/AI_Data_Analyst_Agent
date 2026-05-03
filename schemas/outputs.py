@@ -89,3 +89,11 @@ AnyStatResult = Union[
     ANOVAResult,
     DescribeOnlyResult,
 ]
+
+
+class StatsResultsBundle(BaseModel):
+    router: StatsRouterOutput
+    results: list[AnyStatResult] = Field(default_factory=list)
+    custom_code_stderr: Optional[str] = None
+    custom_payload: Optional[dict[str, Any]] = None
+    errors: list[str] = Field(default_factory=list)
