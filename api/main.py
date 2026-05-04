@@ -23,19 +23,3 @@ class AnalyzeRequest(BaseModel):
 def root():
     return {"message": "AI Data Analyst Agent is running"}
 
-
-@app.post("/analyze")
-def analyze(request: AnalyzeRequest):
-    try:
-        result = run_workflow(
-            question=request.question,
-            dataset_path=request.dataset_path,
-            max_retries=request.max_retries or 2,
-        )
-        return result
-    except FileNotFoundError as e:
-        logger.warning("Dataset not found: %s", e)
-        raise HTTPException(status_code=404, detail=str(e)) from e
-    except Exception as e:
-        logger.exception("Analyze failed")
-        raise HTTPException(status_code=500, detail=str(e)) from e
