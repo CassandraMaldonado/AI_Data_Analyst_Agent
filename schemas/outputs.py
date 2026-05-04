@@ -110,3 +110,11 @@ class RetryStage(str, Enum):
     INSIGHTS = "insights"
     STATS = "stats"
     EXECUTOR = "executor"
+
+
+class CritiqueResult(BaseModel):
+    supported: bool
+    summary: str
+    issues: list[str] = Field(default_factory=list)
+    retry_stage: RetryStage = RetryStage.NONE
+
