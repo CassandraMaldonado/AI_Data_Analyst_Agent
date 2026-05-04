@@ -118,3 +118,8 @@ class CritiqueResult(BaseModel):
     issues: list[str] = Field(default_factory=list)
     retry_stage: RetryStage = RetryStage.NONE
 
+
+class CustomStatsCodeOutput(BaseModel):
+    python_code: str = Field(
+        description="Short pandas/scipy snippet; must set `result` dict with keys statistic, p_value, interpretation."
+    )
